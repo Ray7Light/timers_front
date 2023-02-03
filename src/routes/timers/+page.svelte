@@ -1,5 +1,5 @@
 <script lang="ts">
-	// TODO: Add remove confirm message
+	// TODO: Add deleted timer name to delete confirm modal 
 	import type { ActionResult } from '@sveltejs/kit';
 	import { applyAction, deserialize } from '$app/forms';
 	import { invalidateAll } from '$app/navigation';
@@ -38,6 +38,8 @@
 
 <Modal
 	isOpen={deleteConfirmOpen}
+	title="Delete?"
+	size="Small"
 	on:confirm={() => {
 		deleteConfirmOpen = false;
 		deleteTimer();
@@ -46,7 +48,10 @@
 		deleteConfirmOpen = false;
 		removeEvent = null;
 	}}
-/>
+>
+	<div>Are you sure, you want to delete this timer?</div>
+</Modal>
+
 <h1 class="text-3xl font-bold underline">Timers</h1>
 <a href="/timers/add">Add</a>
 
